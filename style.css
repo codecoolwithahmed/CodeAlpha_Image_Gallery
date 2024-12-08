@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #242223;
+  color: #fff;
+  animation: backgroundAnimation 10s infinite;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #242223;
+  }
+  50% {
+    background-color: #3a3a3a;
+  }
+  100% {
+    background-color: #242223;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.images {
+  columns: 5 340px;
+  margin-top: 40px;
+  gap: 15px;
+  max-width: 89%;
+}
+
+.images .card {
+  margin-bottom: 20px;
+  list-style-type: none;
+  border: 1px solid fff5f5a1;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.images .card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.images img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.images .card:hover img {
+  transform: scale(1.1); /* Zoom effect */
+}
+
+.modal {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal.show img {
+  transform: scale(1);
+}
+
+.modal .close,
+.modal .prev,
+.modal .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.modal .close {
+  top: 10%;
+  right: 10%;
+  transform: none;
+}
+
+.modal .prev,
+.modal .next {
+  font-size: 40px;
+}
+
+.modal .prev:hover,
+.modal .next:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.modal .prev {
+  left: 5%;
+}
+
+.modal .next {
+  right: 5%;
+}
+
+.images .card {
+  opacity: 0;
+}
+
+.images .card.show {
+  opacity: 1;
+}
